@@ -34,20 +34,21 @@ export class Marker extends React.Component {
     this.renderMarker();
   }
 
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.icon.url !== this.props.icon.url) return true;
-
-    return false;
-  }
-
   componentDidUpdate(prevProps) {
-    if ((this.props.map !== prevProps.map) ||
-      (this.props.position !== prevProps.position) ||
-      (this.props.icon !== prevProps.icon)) {
-        if (this.marker) {
-            this.marker.setMap(null);
-        }
-        this.renderMarker();
+    if (
+      this.props.icon.url !== prevProps.icon.url ||
+      (
+        typeof prevProps.map === 'undefined' &&
+        typeof this.props.map === 'object'
+      ) ||
+      this.props.position.lat !== prevProps.position.lat ||
+      this.props.position.lng !== prevProps.position.lng
+    ) {
+      if (this.marker) {
+        this.marker.setMap(null);
+      }
+
+      this.renderMarker();
     }
   }
 
@@ -110,20 +111,7 @@ export class Marker extends React.Component {
   }
 
   render() {
-    return (
-      <Fragment>
-        {this.props.children && this.marker ?
-          React.Children.only(
-            React.cloneElement(
-              this.props.children, 
-              { marker: this.marker,
-                google: this.props.google,
-                map: this.props.map}
-            )
-          ) : null
-        }
-      </Fragment>
-    )
+    return null;
   }
 }
 

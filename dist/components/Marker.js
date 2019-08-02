@@ -54,6 +54,12 @@
     return target;
   }
 
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  };
+
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
@@ -133,19 +139,13 @@
         this.renderMarker();
       }
     }, {
-      key: 'shouldComponentUpdate',
-      value: function shouldComponentUpdate(nextProps) {
-        if (nextProps.icon.url !== this.props.icon.url) return true;
-
-        return false;
-      }
-    }, {
       key: 'componentDidUpdate',
       value: function componentDidUpdate(prevProps) {
-        if (this.props.map !== prevProps.map || this.props.position !== prevProps.position || this.props.icon !== prevProps.icon) {
+        if (this.props.icon.url !== prevProps.icon.url || typeof prevProps.map === 'undefined' && _typeof(this.props.map) === 'object' || this.props.position.lat !== prevProps.position.lat || this.props.position.lng !== prevProps.position.lng) {
           if (this.marker) {
             this.marker.setMap(null);
           }
+
           this.renderMarker();
         }
       }
@@ -217,13 +217,7 @@
     }, {
       key: 'render',
       value: function render() {
-        return _react2.default.createElement(
-          _react.Fragment,
-          null,
-          this.props.children && this.marker ? _react2.default.Children.only(_react2.default.cloneElement(this.props.children, { marker: this.marker,
-            google: this.props.google,
-            map: this.props.map })) : null
-        );
+        return null;
       }
     }]);
 
