@@ -58,10 +58,10 @@
     "gh-pages": "^1.1.0",
     "highlight.js": "^9.3.0",
     "history": "^3.0.0",
-    "hjs-webpack": "^8.1.0",
+    "hjs-webpack": "^9.2.0",
     "jsdom": "^9.2.1",
     "marked": "^0.3.17",
-    "mocha": "^2.4.5",
+    "mocha": "^10.2.0",
     "nodemon": "^1.9.1",
     "npm-font-open-sans": "0.0.3",
     "postcss-loader": "^0.9.1",
@@ -75,7 +75,7 @@
     "sinon": "^1.17.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.0"
+    "webpack": "^5.75.0"
   },
   "peerDependencies": {
     "react": "~0.14.8 || ^15.0.0 || ^16.0.0",
